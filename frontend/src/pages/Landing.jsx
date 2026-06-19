@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Upload, Sparkles, Database, Search, MessageSquare } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import ShaderBackground from '../components/ui/shader-background';
 
 export default function Landing() {
   const navigate = useNavigate();
@@ -37,13 +38,15 @@ export default function Landing() {
   ];
 
   return (
-    <div className="min-h-screen md:h-screen bg-background flex flex-col items-center justify-center relative overflow-hidden">
-      {/* Background gradients */}
-      <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none" />
+    <div className="min-h-screen md:h-screen flex flex-col items-center justify-center relative overflow-hidden">
+      <ShaderBackground />
+      {/* Right middle blue glow blob */}
+      <div className="absolute right-[-10%] top-[30%] w-[450px] h-[450px] bg-blue-600/40 blur-[120px] rounded-full pointer-events-none z-0" />
+      {/* Left middle purple glow blob */}
+      <div className="absolute left-[-10%] top-[30%] w-[450px] h-[450px] bg-violet-600/40 blur-[120px] rounded-full pointer-events-none z-0" />
 
       <div className="max-w-7xl w-full px-6 py-8 md:py-10 flex flex-col items-center text-center z-10">
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -54,19 +57,19 @@ export default function Landing() {
           <span className="text-sm font-medium text-zinc-300">Powered by Retrieval-Augmented Generation</span>
         </motion.div>
 
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className="font-serif text-5xl md:text-6xl lg:text-7xl text-zinc-100 tracking-normal mb-4 md:mb-5 leading-[1.1]"
         >
           Chat With Your PDFs <br />
-          <span className="font-script text-primary font-normal text-4xl md:text-5xl lg:text-6xl block mt-2 tracking-wide normal-case">
+          <span className="font-serif font-normal text-violet-300 text-4xl md:text-5xl lg:text-6xl block mt-2 pb-2 leading-normal tracking-wide normal-case">
             using AI
           </span>
         </motion.h1>
 
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -75,19 +78,19 @@ export default function Landing() {
           Upload your documents, ask questions, and get accurate answers instantly. Stop reading through hundreds of pages—let AI do the heavy lifting for you.
         </motion.p>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex flex-col sm:flex-row items-center gap-4 w-full justify-center"
         >
-          <button 
+          <button
             onClick={() => navigate('/chat')}
             className="flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl font-semibold transition-all shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:shadow-[0_0_40px_rgba(124,58,237,0.5)] hover:-translate-y-1"
           >
             Start Chatting <ArrowRight className="w-5 h-5" />
           </button>
-          <button 
+          <button
             onClick={() => navigate('/chat?upload=true')}
             className="flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-zinc-900 hover:bg-zinc-800 text-white rounded-xl font-semibold border border-border transition-all hover:-translate-y-1"
           >
@@ -95,15 +98,15 @@ export default function Landing() {
           </button>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
           className="mt-10 md:mt-12 lg:mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full"
         >
           {features.map((f, i) => (
-            <motion.div 
-              key={i} 
+            <motion.div
+              key={i}
               whileHover={{ y: -4, scale: 1.01 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               className={`bg-card/45 backdrop-blur-md border border-border/80 rounded-xl p-3.5 md:p-4 text-left transition-all duration-300 cursor-default ${f.hoverClass}`}
