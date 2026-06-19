@@ -7,40 +7,48 @@ export default function Landing() {
 
   const features = [
     {
-      icon: <Database className="w-6 h-6 text-primary" />,
+      icon: <Database className="w-5 h-5 text-violet-400" />,
       title: "ChromaDB Vector Storage",
-      description: "Fast, local vector database for storing document embeddings."
+      description: "Local vector database that securely stores and indexes your document embeddings.",
+      hoverClass: "hover:border-violet-500/40 hover:shadow-[0_0_25px_rgba(124,58,237,0.15)]",
+      iconBg: "bg-violet-950/35 border-violet-500/10"
     },
     {
-      icon: <Search className="w-6 h-6 text-blue-500" />,
+      icon: <Search className="w-5 h-5 text-blue-400" />,
       title: "Semantic Search",
-      description: "Find exactly what you need based on meaning and context."
+      description: "Find answers based on semantic meaning and context, rather than simple keyword matches.",
+      hoverClass: "hover:border-blue-500/40 hover:shadow-[0_0_25px_rgba(59,130,246,0.15)]",
+      iconBg: "bg-blue-950/35 border-blue-500/10"
     },
     {
-      icon: <Sparkles className="w-6 h-6 text-yellow-500" />,
-      title: "Gemini 2.5 AI",
-      description: "State-of-the-art language model for generating accurate answers."
+      icon: <Sparkles className="w-5 h-5 text-amber-400" />,
+      title: "Multi-Model AI",
+      description: "Leverage state-of-the-art LLMs like Gemini, Groq, or private local Ollama models.",
+      hoverClass: "hover:border-amber-500/40 hover:shadow-[0_0_25px_rgba(245,158,11,0.15)]",
+      iconBg: "bg-amber-950/35 border-amber-500/10"
     },
     {
-      icon: <MessageSquare className="w-6 h-6 text-green-500" />,
+      icon: <MessageSquare className="w-5 h-5 text-emerald-400" />,
       title: "Source Citations",
-      description: "Every answer includes citations mapping back to the exact PDF page."
+      description: "Verify response accuracy with transparent page citations linking to the exact source PDF.",
+      hoverClass: "hover:border-emerald-500/40 hover:shadow-[0_0_25px_rgba(16,185,129,0.15)]",
+      iconBg: "bg-emerald-950/35 border-emerald-500/10"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen md:h-screen bg-background flex flex-col items-center justify-center relative overflow-hidden">
       {/* Background gradients */}
       <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="max-w-5xl w-full px-6 py-20 flex flex-col items-center text-center z-10">
+      <div className="max-w-7xl w-full px-6 py-8 md:py-10 flex flex-col items-center text-center z-10">
         
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-border mb-8"
+          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-border mb-4 md:mb-6"
         >
           <Sparkles className="w-4 h-4 text-primary" />
           <span className="text-sm font-medium text-zinc-300">Powered by Retrieval-Augmented Generation</span>
@@ -50,16 +58,19 @@ export default function Landing() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-gradient-to-br from-white to-zinc-500 bg-clip-text text-transparent"
+          className="font-serif text-5xl md:text-6xl lg:text-7xl text-zinc-100 tracking-normal mb-4 md:mb-5 leading-[1.1]"
         >
-          Chat With Your PDFs <br /> Using AI
+          Chat With Your PDFs <br />
+          <span className="font-script text-primary font-normal text-4xl md:text-5xl lg:text-6xl block mt-2 tracking-wide normal-case">
+            using AI
+          </span>
         </motion.h1>
 
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10"
+          className="text-base md:text-lg text-muted-foreground max-w-2xl mb-6 md:mb-8"
         >
           Upload your documents, ask questions, and get accurate answers instantly. Stop reading through hundreds of pages—let AI do the heavy lifting for you.
         </motion.p>
@@ -88,16 +99,21 @@ export default function Landing() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="mt-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full"
+          className="mt-10 md:mt-12 lg:mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full"
         >
           {features.map((f, i) => (
-            <div key={i} className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-6 text-left hover:border-primary/30 transition-colors">
-              <div className="bg-zinc-900/80 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+            <motion.div 
+              key={i} 
+              whileHover={{ y: -4, scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className={`bg-card/45 backdrop-blur-md border border-border/80 rounded-xl p-3.5 md:p-4 text-left transition-all duration-300 cursor-default ${f.hoverClass}`}
+            >
+              <div className={`w-8 h-8 md:w-9 md:h-9 rounded-lg flex items-center justify-center mb-2.5 md:mb-3 border ${f.iconBg}`}>
                 {f.icon}
               </div>
-              <h3 className="font-semibold text-lg text-zinc-100 mb-2">{f.title}</h3>
-              <p className="text-sm text-zinc-400 leading-relaxed">{f.description}</p>
-            </div>
+              <h3 className="font-semibold text-sm md:text-base text-zinc-100 mb-1 line-clamp-1">{f.title}</h3>
+              <p className="text-[11px] md:text-xs text-zinc-400 leading-relaxed line-clamp-2">{f.description}</p>
+            </motion.div>
           ))}
         </motion.div>
 
