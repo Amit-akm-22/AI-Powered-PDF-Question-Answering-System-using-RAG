@@ -34,8 +34,8 @@ export default function MessageBubble({ message }) {
   };
 
   return (
-    <div className={`py-4 md:py-6 flex w-full ${isUser ? 'bg-transparent' : 'bg-zinc-900/30 border-y border-border/10'}`}>
-      <div className="max-w-4xl mx-auto flex w-full px-4 gap-3 md:gap-6">
+    <div className={`py-4 md:py-6 flex w-full ${isUser ? 'bg-transparent' : 'bg-zinc-900/60 border-y border-zinc-800/80'}`}>
+      <div className="max-w-4xl w-full mx-auto md:mx-0 md:ml-12 flex px-4 gap-3 md:gap-6">
         <div className="shrink-0 mt-0.5">
           {isUser ? (
             <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-violet-600 to-indigo-600 flex items-center justify-center border border-primary/20 shadow-md shadow-primary/10">

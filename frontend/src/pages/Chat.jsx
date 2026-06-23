@@ -78,10 +78,33 @@ export default function Chat() {
     setSelectedDocuments(documents.length > 0 ? [documents[0].id] : []);
   }, [documents, setSelectedDocuments]);
 
+  // Lock html and body overflow to prevent page-level scrolling (critical for mobile viewports)
+  useEffect(() => {
+    const html = document.documentElement;
+    const body = document.body;
+
+    const originalHtmlOverflow = html.style.overflow;
+    const originalHtmlHeight = html.style.height;
+    const originalBodyOverflow = body.style.overflow;
+    const originalBodyHeight = body.style.height;
+
+    html.style.overflow = 'hidden';
+    html.style.height = '100%';
+    body.style.overflow = 'hidden';
+    body.style.height = '100%';
+
+    return () => {
+      html.style.overflow = originalHtmlOverflow;
+      html.style.height = originalHtmlHeight;
+      body.style.overflow = originalBodyOverflow;
+      body.style.height = originalBodyHeight;
+    };
+  }, []);
+
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
   return (
-    <div className="flex h-screen bg-background overflow-hidden relative">
+    <div className="flex h-screen h-[100dvh] bg-background overflow-hidden relative">
       
       {/* Mobile Sidebar Overlay */}
       {sidebarOpen && (

@@ -47,7 +47,7 @@ export default function ChatInput({ onSendMessage, isTyping, ttsEnabled, onToggl
   return (
     <div className="p-4 bg-background/40 backdrop-blur-md border-t border-border/40 shrink-0">
       {showWarning && !hasDocuments && (
-        <div className="max-w-4xl mx-auto mb-3 flex items-center justify-between gap-3 p-3 rounded-xl bg-violet-950/40 border border-violet-500/20 text-violet-200 text-xs sm:text-sm shadow-[0_0_15px_rgba(124,58,237,0.05)] animate-pulse">
+        <div className="max-w-4xl w-full mx-auto md:mx-0 md:ml-12 mb-3 flex items-center justify-between gap-3 p-3 rounded-xl bg-violet-950/40 border border-violet-500/20 text-violet-200 text-xs sm:text-sm shadow-[0_0_15px_rgba(124,58,237,0.05)] animate-pulse">
           <div className="flex items-center gap-2">
             <span className="flex h-2 w-2 rounded-full bg-violet-500 animate-pulse shrink-0" />
             <span className="font-medium text-zinc-300">
@@ -64,7 +64,7 @@ export default function ChatInput({ onSendMessage, isTyping, ttsEnabled, onToggl
         </div>
       )}
 
-      <div className={`max-w-4xl mx-auto flex items-center gap-2 bg-zinc-900/60 backdrop-blur-sm border rounded-2xl pl-4 pr-2.5 py-2.5 shadow-md transition-all
+      <div className={`max-w-4xl w-full mx-auto md:mx-0 md:ml-12 flex items-center gap-2 bg-zinc-900/60 backdrop-blur-sm border rounded-2xl pl-4 pr-2.5 py-2.5 shadow-md transition-all
         ${isFocused ? 'border-primary/60 ring-2 ring-primary/20 shadow-[0_0_20px_rgba(124,58,237,0.1)]' : 'border-zinc-800'}
       `}>
         <textarea
@@ -120,7 +120,7 @@ export default function ChatInput({ onSendMessage, isTyping, ttsEnabled, onToggl
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto text-center mt-2 hidden md:block">
+      <div className="max-w-4xl w-full mx-auto md:mx-0 md:ml-12 text-left pl-4 mt-2 hidden md:block">
         <p className="text-[10px] text-muted-foreground">
           AI can make mistakes. Consider verifying important information. Use Shift + Enter for new line.
         </p>
