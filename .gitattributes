@@ -1,6 +1,5 @@
 # GitAttributes config for GitHub Linguist overrides
-# This excludes frontend utilities, styling, and vendor files from language stats to focus the repo on Python.
-
+# This excludes frontend utilities, styling, and vendor files from language stats to focus the repo on Pytho
 *.css linguist-vendored
 frontend/postcss.config.js linguist-vendored
 frontend/eslint.config.js linguist-vendored
